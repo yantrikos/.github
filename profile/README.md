@@ -1,114 +1,147 @@
 <p align="center">
   <a href="https://yantrikdb.com">
-    <img src="https://raw.githubusercontent.com/yantrikos/yantrikdb-web/main/public/icon.png" width="104" alt="YantrikDB Memory Mechanism logo">
+    <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/logo.png" width="104" alt="YantrikDB logo">
   </a>
 </p>
 
-<h1 align="center">YantrikDB</h1>
-<p align="center"><strong>Memory that just works.</strong></p>
+<h1 align="center">YantrikDB — memory for AI agents</h1>
+
 <p align="center">
-  Open-source cognitive memory for AI agents. Local when you want it, shared when you need it.
+  <strong>Your agent forgets your project between sessions. This is the database that remembers.</strong>
 </p>
 
 <p align="center">
-  <a href="https://yantrikdb.com">Website</a> ·
+  Open source, local-first, and inspectable. Works with Claude Code, Cursor, Codex,
+  Windsurf, and anything else that speaks MCP.
+</p>
+
+<p align="center">
+  <a href="https://pypi.org/project/yantrikdb/"><img src="https://img.shields.io/pypi/v/yantrikdb?label=pypi&color=E8A33D" alt="PyPI version"></a>
+  <a href="https://pypi.org/project/yantrikdb/"><img src="https://img.shields.io/pypi/dm/yantrikdb?label=installs%2Fmonth&color=E8A33D" alt="PyPI downloads per month"></a>
+  <a href="https://crates.io/crates/yantrikdb"><img src="https://img.shields.io/crates/v/yantrikdb?label=crates.io&color=E8A33D" alt="crates.io version"></a>
+  <a href="https://github.com/yantrikos/yantrikdb/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="Apache-2.0"></a>
+</p>
+
+<p align="center">
   <a href="https://yantrikdb.com/guides/quickstart/">Quick start</a> ·
   <a href="https://yantrikdb.com/guides/mcp/">MCP setup</a> ·
   <a href="https://yantrikdb.com/research/benchmarks/">Benchmarks</a> ·
+  <a href="https://yantrikdb.com/guides/memory-atlas/">Memory Atlas</a> ·
   <a href="https://github.com/yantrikos/yantrikdb-server/discussions">Discussions</a>
 </p>
 
-Your agent does not need another place to dump text. It needs memory that can
-notice when facts changed, explain why something was recalled, keep tenants and
-workspaces isolated, and remain useful after thousands of writes.
+---
 
-YantrikDB manages that full lifecycle: hybrid recall, temporal decay,
-consolidation, contradiction tracking, entities and relations, provenance,
-procedural memory, skills, and explicit maintenance. The core is Rust and the
-same engine runs embedded, behind MCP, or as a replicated network database.
+## Why not just a markdown file?
+
+That is the right first question, and for a week of notes a `CLAUDE.md` is genuinely
+fine. It stops being fine when the file gets long enough that everything in it is
+loaded every turn, when two lines in it disagree and nothing notices, and when you
+cannot tell why the agent brought up something from March.
+
+|  | A notes file | A vector store | YantrikDB |
+|---|---|---|---|
+| Recalls only what is relevant | ✗ loads everything | ✓ | ✓ |
+| Notices a fact changed | ✗ | ✗ keeps both | ✓ closes the old one and keeps the history |
+| Surfaces contradictions | ✗ | ✗ | ✓ flags them for you to resolve |
+| Tells you *why* it recalled something | ✗ | ✗ opaque top-k | ✓ scores and retrieval reasons |
+| Answers "what did you believe in March?" | ✗ | ✗ | ✓ point-in-time recall |
+| Still usable after 10,000 writes | ✗ becomes a junk drawer | partly | ✓ consolidation and decay |
 
 ## Get an agent remembering in 60 seconds
 
-```bash
-pip install yantrikdb-mcp
-```
+No account, no API key, no cloud. Memory lives in one SQLite file on your machine.
 
-For Codex:
-
-```bash
-codex mcp add yantrikdb -- yantrikdb-mcp
-```
-
-For Claude Code, Cursor, Windsurf, and other MCP clients:
+**Claude Code, Cursor, Windsurf, or any MCP client:**
 
 ```json
 {
   "mcpServers": {
     "yantrikdb": {
-      "command": "yantrikdb-mcp"
+      "command": "uvx",
+      "args": ["yantrikdb-mcp"]
     }
   }
 }
 ```
 
-No cloud account is required. The default store is a local SQLite file and the
-bundled embedder works without an external model service.
+**Codex:**
+
+```bash
+codex mcp add yantrikdb -- uvx yantrikdb-mcp
+```
+
+**In your own Python or Rust:**
+
+```bash
+pip install yantrikdb        # or: cargo add yantrikdb
+```
+
+Your agent starts recalling prior context, recording decisions, and flagging
+contradictions on its own — no prompting required.
+
+## You can see everything it remembers
+
+Memory you cannot inspect is memory you cannot trust. Every record carries where it
+came from and why it was retrieved. You can read the store, correct a fact and keep
+the old version, delete anything, or open the whole graph in your browser with
+[Memory Atlas](https://yantrikdb.com/guides/memory-atlas/) — one command, no upload.
 
 ## Pick the shape that fits
 
 | Run mode | Start here | Best for |
 |---|---|---|
-| **Embedded** | [`pip install yantrikdb`](https://pypi.org/project/yantrikdb/) or [`cargo add yantrikdb`](https://crates.io/crates/yantrikdb) | One application owning its memory in-process |
-| **MCP** | [`pip install yantrikdb-mcp`](https://pypi.org/project/yantrikdb-mcp/) | Giving an existing coding agent memory across sessions |
-| **Network** | [`docker pull ghcr.io/yantrikos/yantrikdb`](https://github.com/yantrikos/yantrikdb-server/pkgs/container/yantrikdb) | Shared memory, authenticated tenants, replication, and failover |
+| **Embedded** | [`pip install yantrikdb`](https://pypi.org/project/yantrikdb/) · [`cargo add yantrikdb`](https://crates.io/crates/yantrikdb) | One application owning its memory in-process |
+| **MCP server** | [`uvx yantrikdb-mcp`](https://pypi.org/project/yantrikdb-mcp/) | Giving a coding agent memory across sessions |
+| **Self-hosted cluster** | [`docker pull ghcr.io/yantrikos/yantrikdb`](https://github.com/yantrikos/yantrikdb-server/pkgs/container/yantrikdb) | Shared memory, tenants, replication, failover |
 
-## What makes it cognitive
+The same engine runs in all three. Start with one local file and move to a server
+later without changing the memory model.
 
-- **Memory can be wrong.** Contradictory structured claims remain visible and disputed until an operator resolves them.
-- **Memory changes with time.** Recall supports decay, first-mention ordering, revision history, temporal ranges, and point-in-time queries.
-- **Recall is inspectable.** Results include scores and retrieval reasons instead of asking you to trust an opaque top-k list.
-- **Structure survives sessions.** Entities, typed relations, tasks, procedures, triggers, conversations, and skill outcomes live beside semantic memory.
-- **Isolation is a primitive.** Namespaces scope records and cognitive state; the network server adds authenticated tenant databases.
-- **The deployment path is real.** Start with one local file, then move to a server or YRP-replicated cluster without replacing the memory model.
+## What it does that a vector index does not
 
-## The ecosystem
+- **Corrections keep receipts.** Tell it that it was wrong and the old belief becomes
+  history rather than disappearing — you can still ask what it used to think.
+- **Conflicting facts stay visible.** Contradictions are surfaced and marked disputed
+  until someone resolves them, instead of both being served as true.
+- **Time is a first-class dimension.** Decay, first-mention ordering, revision history,
+  temporal ranges, and point-in-time queries.
+- **Structure survives sessions.** Entities, typed relations, tasks, procedures,
+  triggers, and skills live beside semantic memory.
+- **Isolation is built in.** Namespaces scope every record; the server adds
+  authenticated per-tenant databases.
 
-| Project | Role |
+## The projects
+
+| Project | What it is |
 |---|---|
-| [`yantrikdb`](https://github.com/yantrikos/yantrikdb) | Apache-2.0 Rust engine and Python bindings |
-| [`yantrikdb-mcp`](https://github.com/yantrikos/yantrikdb-mcp) | Drop-in MCP server and portable Agent Skill |
-| [`yantrikdb-server`](https://github.com/yantrikos/yantrikdb-server) | Authenticated HTTP and wire APIs, tenancy, replication, and operations |
-| [`yantrikdb-hermes-plugin`](https://github.com/yantrikos/yantrikdb-hermes-plugin) | Self-maintaining memory provider for Hermes Agent |
-| [`openclaw-memory-yantrikdb`](https://github.com/yantrikos/openclaw-memory-yantrikdb) | Conflict-aware OpenClaw memory-slot plugin |
-| [`langchain-yantrikdb`](https://github.com/yantrikos/langchain-yantrikdb) | LangChain VectorStore and ChatMessageHistory integration |
-| [`yantrikdb-client`](https://github.com/yantrikos/yantrikdb-client) | Typed Python client for the network server |
-| [`yantrikdb-web`](https://github.com/yantrikos/yantrikdb-web) | Documentation, live browser Memory Lab, and reproducible showcases |
+| [`yantrikdb`](https://github.com/yantrikos/yantrikdb) | The engine — Rust core with Python bindings (Apache-2.0) |
+| [`yantrikdb-mcp`](https://github.com/yantrikos/yantrikdb-mcp) | MCP server for Claude Code, Cursor, Codex, Windsurf, and friends |
+| [`yantrikdb-server`](https://github.com/yantrikos/yantrikdb-server) | Self-hosted HTTP and wire APIs, tenancy, replication, operations |
+| [`yantrikdb-hermes-plugin`](https://github.com/yantrikos/yantrikdb-hermes-plugin) | Memory provider for Hermes Agent |
+| [`openclaw-memory-yantrikdb`](https://github.com/yantrikos/openclaw-memory-yantrikdb) | Memory slot plugin for OpenClaw |
+| [`langchain-yantrikdb`](https://github.com/yantrikos/langchain-yantrikdb) | LangChain VectorStore and chat history |
+| [`yantrikdb-client`](https://github.com/yantrikos/yantrikdb-client) | Typed Python client for the server |
 
-Experimental work lives in [`yantrik-mind`](https://github.com/yantrikos/yantrik-mind).
-It explores what a companion can become when typed beliefs, reflection,
-delegation, and safety all share the same durable substrate.
+## The evidence, including the parts that did not work
 
-## Inspect the evidence
+Benchmark pages ship with commands, fixtures, and caveats, so you can rerun them
+rather than take our word for it — and the failed experiments stay published too.
 
-We publish the awkward results as well as the wins. The benchmark pages include
-commands, fixtures, caveats, and corrections so claims can be rerun rather than
-repeated.
-
-- [Run the browser Memory Lab](https://yantrikdb.com/#memory-lab)
-- [Read the benchmark ledger](https://yantrikdb.com/research/benchmarks/)
-- [Whose Memory, Whose Model?](https://yantrikdb.com/papers/beam-frozen-context/)
-- [Skill as Memory, Not Document](https://doi.org/10.5281/zenodo.20128887)
-- [See multi-agent memory handle a stale belief](https://yantrikdb.com/showcase/multi-agent/)
+- [LongMemEval retrieval](https://yantrikdb.com/papers/longmemeval-retrieval/) — 98.7% of queries retrieve every gold session at k=40 (479 of 500 queries, shipped defaults), with the command to rerun it and a section on why "recall@5" alone is not a number
+- [Benchmark ledger](https://yantrikdb.com/research/benchmarks/) — token cost against file-based memory, with the script
+- [Memory Lab in your browser](https://yantrikdb.com/#memory-lab) — no install
+- [Multi-agent memory handling a stale belief](https://yantrikdb.com/showcase/multi-agent/)
+- [Whose Memory, Whose Model?](https://yantrikdb.com/papers/beam-frozen-context/) · [Skill as Memory, Not Document](https://doi.org/10.5281/zenodo.20128887)
 
 ## Build with us
 
-Use [Discussions](https://github.com/yantrikos/yantrikdb-server/discussions)
-for architecture and product questions. File engine issues in
-[`yantrikdb`](https://github.com/yantrikos/yantrikdb/issues), MCP issues in
-[`yantrikdb-mcp`](https://github.com/yantrikos/yantrikdb-mcp/issues), and
-server or cluster issues in
-[`yantrikdb-server`](https://github.com/yantrikos/yantrikdb-server/issues).
+Questions and architecture discussion go in
+[Discussions](https://github.com/yantrikos/yantrikdb-server/discussions). Bugs go to
+the repo they belong to: [engine](https://github.com/yantrikos/yantrikdb/issues),
+[MCP](https://github.com/yantrikos/yantrikdb-mcp/issues),
+[server](https://github.com/yantrikos/yantrikdb-server/issues).
 
-The useful feedback is concrete: a memory your agent should have recalled, a
-stale fact it should have downgraded, a conflict it failed to surface, or a
-workflow that still takes too much ceremony.
+The most useful report is a concrete one: a memory your agent should have recalled
+and did not, a stale fact it kept serving, a contradiction it missed, or a workflow
+that still takes too much ceremony.
