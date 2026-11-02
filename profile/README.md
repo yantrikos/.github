@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://yantrikos.com">
-    <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/yantrik-mark.png" width="96" alt="Yantrik OS">
+    <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/yantrik-emblem.png" width="120" alt="The Yantrik OS emblem: a gold Y over a gear, inside a yantra">
   </a>
 </p>
 
