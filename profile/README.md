@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://yantrikos.com">
-    <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/logo.png" width="88" alt="Yantrik logo">
+    <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/yantrik-mark.png" width="96" alt="Yantrik OS">
   </a>
 </p>
 
