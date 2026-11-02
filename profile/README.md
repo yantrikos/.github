@@ -66,6 +66,8 @@ Calendar, Notes, Weather, Files, Email, Terminal, Editor, Music, Images and more
 
 ---
 
+<p><img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/yantrikdb-mark.png" width="72" align="left" alt="The YantrikDB mark: the gold Yantrik Y over a disc of time layers"></p>
+
 <h2 id="yantrikdb">YantrikDB — the memory under it all</h2>
 
 **Your agent forgets your project between sessions. This is the database that remembers.** Local-first and inspectable, it consolidates duplicates, catches contradictions, and answers "what did you believe in March?". It works with Claude Code, Cursor, Codex, Windsurf and anything that speaks MCP, and it's the memory every agent on Yantrik OS shares.
