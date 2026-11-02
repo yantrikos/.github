@@ -48,7 +48,7 @@ Files, folders and app shortcuts sit where you put them, with real thumbnails an
   <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/shots/bench.jpg" width="900" alt="The Yantrik desktop with folders, documents and photo thumbnails, and a Continue row for the last file opened">
 </p>
 
-### 18 apps on one framework
+### 19 apps on one framework
 
 Calendar, Notes, Weather, Files, Email, Terminal, Editor, Music, Images and more, all built on the same app framework, so every one of them speaks the control surface from the start.
 
@@ -70,7 +70,7 @@ Calendar, Notes, Weather, Files, Email, Terminal, Editor, Music, Images and more
 
 <h2 id="yantrikdb">YantrikDB — the memory under it all</h2>
 
-**Your agent forgets your project between sessions. This is the database that remembers.** Local-first and inspectable, it consolidates duplicates, catches contradictions, and answers "what did you believe in March?". It works with Claude Code, Cursor, Codex, Windsurf and anything that speaks MCP, and it's the memory every agent on Yantrik OS shares.
+**Your agent forgets your project between sessions. This is the database that remembers.** Local-first and inspectable, it consolidates duplicates, catches contradictions, and answers "what did you believe in March?". It works with Claude Code, Cursor, Codex, Windsurf and anything that speaks MCP, and it's the memory built into Yantrik OS, where every agent gets it; one store shared by all of them is in progress.
 
 <p>
   <a href="https://pypi.org/project/yantrikdb/"><img src="https://img.shields.io/pypi/v/yantrikdb?label=pypi&color=E8A33D" alt="PyPI version"></a>
