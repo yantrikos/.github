@@ -1,147 +1,126 @@
 <p align="center">
-  <a href="https://yantrikdb.com">
-    <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/logo.png" width="104" alt="YantrikDB logo">
+  <a href="https://yantrikos.com">
+    <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/logo.png" width="88" alt="Yantrik logo">
   </a>
 </p>
 
-<h1 align="center">YantrikDB — memory for AI agents</h1>
+<h1 align="center">Yantrik — an AI-native Linux desktop</h1>
 
 <p align="center">
-  <strong>Your agent forgets your project between sessions. This is the database that remembers.</strong>
+  <strong>Your agents drive real apps through one control surface. Your view never moves.</strong><br>
+  <sub>Early software · nightly builds · a live demo running on a real machine</sub>
 </p>
 
 <p align="center">
-  Open source, local-first, and inspectable. Works with Claude Code, Cursor, Codex,
-  Windsurf, and anything else that speaks MCP.
+  <a href="https://iso.yantrikos.com/nightly/"><b>Download the nightly ISO</b></a> ·
+  <a href="https://yantrikos.com/live"><b>Watch a Mind work, live</b></a> ·
+  <a href="https://github.com/yantrikos/yantrik-os">Source</a> ·
+  <a href="#yantrikdb">YantrikDB</a>
 </p>
 
 <p align="center">
+  <a href="https://yantrikos.com"><img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/hero.png" width="900" alt="Yantrik OS: the launcher open over the desktop, with files and folders on the desktop and the dock below"></a>
+</p>
+
+### Apps that explain themselves
+
+Every Yantrik app describes what it's showing and the actions it takes, in plain data, through one control surface (`yos describe`, `yos act`). Claude Code, Hermes, OpenClaw, Pi and Yantrik's own Mind work from what is actually on the machine, not from screenshots and guessed clicks.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/describe.png" width="900" alt="The Weather app beside a terminal running yos describe weather, which returns the same forecast as structured data">
+  <br><sub>The Weather app, and what an agent reads from it: the same facts, as data it can act on.</sub>
+</p>
+
+### Minds work in their own view
+
+A Mind opens apps in **Mind View**, its own space beside yours. A desk bar says what each Mind is doing right now, with <kbd>Stop…</kbd> and <kbd>Open in Agents</kbd> one press away. A Mind can't move your screen, raise a window over your work, or close yours. Anything destructive asks first, and so does every email it would send, with the whole text on the card.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/mindview-desk.png" width="900" alt="The Mind View desk bar: the Yantrik Mind running a tool, the tool's name, and Stop and Open in Agents buttons">
+  <br><sub>The desk bar over Mind View, captured on a test machine.</sub>
+</p>
+
+### A desktop that is a desktop
+
+Files, folders and app shortcuts sit where you put them, with real thumbnails and a Continue row for what you had open. Archive moves things out of the way and Undo brings them back. Nothing is ever deleted on your behalf.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/bench.jpg" width="900" alt="The Yantrik desktop with folders, documents and photo thumbnails, and a Continue row for the last file opened">
+</p>
+
+### 18 apps on one framework
+
+Calendar, Notes, Weather, Files, Email, Terminal, Editor, Music, Images and more, all built on the same app framework, so every one of them speaks the control surface from the start.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/apps.png" width="900" alt="Four Yantrik apps: Calendar in week view, Notes, Weather and Files">
+</p>
+
+<table>
+<tr>
+<td width="33%" valign="top"><b>Private by default</b><br><sub>Your keys live in a vault. A Mind that needs your city reads your own Weather app instead of sending it out.</sub></td>
+<td width="33%" valign="top"><b>Signed updates</b><br><sub>Releases are signed with ed25519 and checked before anything installs. Old releases can't be replayed.</sub></td>
+<td width="33%" valign="top"><b>Honest about state</b><br><sub>Nightly builds publish as they pass their tests on a real machine, and the live demo shows exactly what a Mind does.</sub></td>
+</tr>
+</table>
+
+---
+
+<h2 id="yantrikdb">YantrikDB — the memory under it all</h2>
+
+**Your agent forgets your project between sessions. This is the database that remembers.** Local-first and inspectable, it consolidates duplicates, catches contradictions, and answers "what did you believe in March?". It works with Claude Code, Cursor, Codex, Windsurf and anything that speaks MCP, and it's the memory every agent on Yantrik OS shares.
+
+<p>
   <a href="https://pypi.org/project/yantrikdb/"><img src="https://img.shields.io/pypi/v/yantrikdb?label=pypi&color=E8A33D" alt="PyPI version"></a>
   <a href="https://pypi.org/project/yantrikdb/"><img src="https://img.shields.io/pypi/dm/yantrikdb?label=installs%2Fmonth&color=E8A33D" alt="PyPI downloads per month"></a>
   <a href="https://crates.io/crates/yantrikdb"><img src="https://img.shields.io/crates/v/yantrikdb?label=crates.io&color=E8A33D" alt="crates.io version"></a>
   <a href="https://github.com/yantrikos/yantrikdb/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="Apache-2.0"></a>
 </p>
 
-<p align="center">
-  <a href="https://yantrikdb.com/guides/quickstart/">Quick start</a> ·
-  <a href="https://yantrikdb.com/guides/mcp/">MCP setup</a> ·
-  <a href="https://yantrikdb.com/research/benchmarks/">Benchmarks</a> ·
-  <a href="https://yantrikdb.com/guides/memory-atlas/">Memory Atlas</a> ·
-  <a href="https://github.com/yantrikos/yantrikdb-server/discussions">Discussions</a>
-</p>
+```json
+{ "mcpServers": { "yantrikdb": { "command": "uvx", "args": ["yantrikdb-mcp"] } } }
+```
+
+<sub>No account, no API key, no cloud: memory lives in one SQLite file on your machine. Codex: <code>codex mcp add yantrikdb -- uvx yantrikdb-mcp</code> · Python or Rust: <code>pip install yantrikdb</code> / <code>cargo add yantrikdb</code></sub>
+
+| | A notes file | A vector store | YantrikDB |
+|---|---|---|---|
+| Recalls only what is relevant | ✗ | ✓ | ✓ |
+| Notices a fact changed | ✗ | ✗ | ✓ keeps the history |
+| Surfaces contradictions | ✗ | ✗ | ✓ |
+| Says *why* it recalled something | ✗ | ✗ | ✓ |
+| Point-in-time recall | ✗ | ✗ | ✓ |
+
+**Evidence, including what didn't work:**
+- [LongMemEval retrieval](https://yantrikdb.com/papers/longmemeval-retrieval/): every gold session retrieved for 98.7% of queries at k=40, with the command to rerun it.
+- [The benchmark ledger](https://yantrikdb.com/research/benchmarks/).
+- [Memory Lab](https://yantrikdb.com/#memory-lab), in your browser.
+- The failed experiments stay published too.
+
+[Quick start](https://yantrikdb.com/guides/quickstart/) · [MCP setup](https://yantrikdb.com/guides/mcp/) · [Memory Atlas](https://yantrikdb.com/guides/memory-atlas/) · [Discussions](https://github.com/yantrikos/yantrikdb-server/discussions)
 
 ---
-
-## Why not just a markdown file?
-
-That is the right first question, and for a week of notes a `CLAUDE.md` is genuinely
-fine. It stops being fine when the file gets long enough that everything in it is
-loaded every turn, when two lines in it disagree and nothing notices, and when you
-cannot tell why the agent brought up something from March.
-
-|  | A notes file | A vector store | YantrikDB |
-|---|---|---|---|
-| Recalls only what is relevant | ✗ loads everything | ✓ | ✓ |
-| Notices a fact changed | ✗ | ✗ keeps both | ✓ closes the old one and keeps the history |
-| Surfaces contradictions | ✗ | ✗ | ✓ flags them for you to resolve |
-| Tells you *why* it recalled something | ✗ | ✗ opaque top-k | ✓ scores and retrieval reasons |
-| Answers "what did you believe in March?" | ✗ | ✗ | ✓ point-in-time recall |
-| Still usable after 10,000 writes | ✗ becomes a junk drawer | partly | ✓ consolidation and decay |
-
-## Get an agent remembering in 60 seconds
-
-No account, no API key, no cloud. Memory lives in one SQLite file on your machine.
-
-**Claude Code, Cursor, Windsurf, or any MCP client:**
-
-```json
-{
-  "mcpServers": {
-    "yantrikdb": {
-      "command": "uvx",
-      "args": ["yantrikdb-mcp"]
-    }
-  }
-}
-```
-
-**Codex:**
-
-```bash
-codex mcp add yantrikdb -- uvx yantrikdb-mcp
-```
-
-**In your own Python or Rust:**
-
-```bash
-pip install yantrikdb        # or: cargo add yantrikdb
-```
-
-Your agent starts recalling prior context, recording decisions, and flagging
-contradictions on its own — no prompting required.
-
-## You can see everything it remembers
-
-Memory you cannot inspect is memory you cannot trust. Every record carries where it
-came from and why it was retrieved. You can read the store, correct a fact and keep
-the old version, delete anything, or open the whole graph in your browser with
-[Memory Atlas](https://yantrikdb.com/guides/memory-atlas/) — one command, no upload.
-
-## Pick the shape that fits
-
-| Run mode | Start here | Best for |
-|---|---|---|
-| **Embedded** | [`pip install yantrikdb`](https://pypi.org/project/yantrikdb/) · [`cargo add yantrikdb`](https://crates.io/crates/yantrikdb) | One application owning its memory in-process |
-| **MCP server** | [`uvx yantrikdb-mcp`](https://pypi.org/project/yantrikdb-mcp/) | Giving a coding agent memory across sessions |
-| **Self-hosted cluster** | [`docker pull ghcr.io/yantrikos/yantrikdb`](https://github.com/yantrikos/yantrikdb-server/pkgs/container/yantrikdb) | Shared memory, tenants, replication, failover |
-
-The same engine runs in all three. Start with one local file and move to a server
-later without changing the memory model.
-
-## What it does that a vector index does not
-
-- **Corrections keep receipts.** Tell it that it was wrong and the old belief becomes
-  history rather than disappearing — you can still ask what it used to think.
-- **Conflicting facts stay visible.** Contradictions are surfaced and marked disputed
-  until someone resolves them, instead of both being served as true.
-- **Time is a first-class dimension.** Decay, first-mention ordering, revision history,
-  temporal ranges, and point-in-time queries.
-- **Structure survives sessions.** Entities, typed relations, tasks, procedures,
-  triggers, and skills live beside semantic memory.
-- **Isolation is built in.** Namespaces scope every record; the server adds
-  authenticated per-tenant databases.
 
 ## The projects
 
 | Project | What it is |
 |---|---|
-| [`yantrikdb`](https://github.com/yantrikos/yantrikdb) | The engine — Rust core with Python bindings (Apache-2.0) |
-| [`yantrikdb-mcp`](https://github.com/yantrikos/yantrikdb-mcp) | MCP server for Claude Code, Cursor, Codex, Windsurf, and friends |
-| [`yantrikdb-server`](https://github.com/yantrikos/yantrikdb-server) | Self-hosted HTTP and wire APIs, tenancy, replication, operations |
-| [`yantrikdb-hermes-plugin`](https://github.com/yantrikos/yantrikdb-hermes-plugin) | Memory provider for Hermes Agent |
-| [`openclaw-memory-yantrikdb`](https://github.com/yantrikos/openclaw-memory-yantrikdb) | Memory slot plugin for OpenClaw |
-| [`langchain-yantrikdb`](https://github.com/yantrikos/langchain-yantrikdb) | LangChain VectorStore and chat history |
-| [`yantrikdb-client`](https://github.com/yantrikos/yantrikdb-client) | Typed Python client for the server |
+| [`yantrik-os`](https://github.com/yantrikos/yantrik-os) | The desktop: shell, native apps, the control surface agents use, Mind View, signed updates |
+| [`yantrik-mind`](https://github.com/yantrikos/yantrik-mind) | Yantrik's own Mind: a Rust agent on YantrikDB's typed memory, behind one harm gate |
+| [`yantrikdb-server`](https://github.com/yantrikos/yantrikdb-server) | Self-hosted memory server: HTTP and wire APIs, tenancy, replication |
+| [`yantrikdb`](https://github.com/yantrikos/yantrikdb) | The memory engine: a Rust core with Python bindings (Apache-2.0) |
+| [`yantrikdb-mcp`](https://github.com/yantrikos/yantrikdb-mcp) | An MCP server for Claude Code, Cursor, Codex, Windsurf and others |
+| [`yantrikdb-hermes-plugin`](https://github.com/yantrikos/yantrikdb-hermes-plugin) | A memory provider for Hermes Agent |
+| [`tier`](https://github.com/yantrikos/tier) | Research: how small models pick the right tool out of many |
 
-## The evidence, including the parts that did not work
+<details>
+<summary><b>Try Yantrik OS</b></summary>
 
-Benchmark pages ship with commands, fixtures, and caveats, so you can rerun them
-rather than take our word for it — and the failed experiments stay published too.
+1. Download the nightly ISO from [iso.yantrikos.com/nightly](https://iso.yantrikos.com/nightly/). Boot it live, or install it next to what you have.
+2. First run asks for one AI provider (local or cloud) and sets up the memory.
+3. Press <kbd>Super</kbd> + <kbd>K</kbd> to ask a Mind, or open **Agents** to give it work and watch it in Mind View.
 
-- [LongMemEval retrieval](https://yantrikdb.com/papers/longmemeval-retrieval/) — 98.7% of queries retrieve every gold session at k=40 (479 of 500 queries, shipped defaults), with the command to rerun it and a section on why "recall@5" alone is not a number
-- [Benchmark ledger](https://yantrikdb.com/research/benchmarks/) — token cost against file-based memory, with the script
-- [Memory Lab in your browser](https://yantrikdb.com/#memory-lab) — no install
-- [Multi-agent memory handling a stale belief](https://yantrikdb.com/showcase/multi-agent/)
-- [Whose Memory, Whose Model?](https://yantrikdb.com/papers/beam-frozen-context/) · [Skill as Memory, Not Document](https://doi.org/10.5281/zenodo.20128887)
+Updates arrive signed on the nightly channel. It's early: [open an issue](https://github.com/yantrikos/yantrik-os/issues) when something's wrong; that's the most useful thing you can do.
+</details>
 
-## Build with us
-
-Questions and architecture discussion go in
-[Discussions](https://github.com/yantrikos/yantrikdb-server/discussions). Bugs go to
-the repo they belong to: [engine](https://github.com/yantrikos/yantrikdb/issues),
-[MCP](https://github.com/yantrikos/yantrikdb-mcp/issues),
-[server](https://github.com/yantrikos/yantrikdb-server/issues).
-
-The most useful report is a concrete one: a memory your agent should have recalled
-and did not, a stale fact it kept serving, a contradiction it missed, or a workflow
-that still takes too much ceremony.
+<p align="center"><sub>Built in the open · Apache-2.0 where noted in each repo · <a href="https://yantrikos.com">yantrikos.com</a> · <a href="https://yantrikdb.com">yantrikdb.com</a></sub></p>
