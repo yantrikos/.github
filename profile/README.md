@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <a href="https://yantrikos.com"><img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/hero.png" width="900" alt="Yantrik OS: the launcher open over the desktop, with files and folders on the desktop and the dock below"></a>
+  <a href="https://yantrikos.com"><img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/shots/hero.png" width="900" alt="Yantrik OS: the launcher open over the desktop, with files and folders on the desktop and the dock below"></a>
 </p>
 
 ### Apps that explain themselves
@@ -27,7 +27,7 @@
 Every Yantrik app describes what it's showing and the actions it takes, in plain data, through one control surface (`yos describe`, `yos act`). Claude Code, Hermes, OpenClaw, Pi and Yantrik's own Mind work from what is actually on the machine, not from screenshots and guessed clicks.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/describe.png" width="900" alt="The Weather app beside a terminal running yos describe weather, which returns the same forecast as structured data">
+  <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/shots/describe.png" width="900" alt="The Weather app beside a terminal running yos describe weather, which returns the same forecast as structured data">
   <br><sub>The Weather app, and what an agent reads from it: the same facts, as data it can act on.</sub>
 </p>
 
@@ -36,7 +36,7 @@ Every Yantrik app describes what it's showing and the actions it takes, in plain
 A Mind opens apps in **Mind View**, its own space beside yours. A desk bar says what each Mind is doing right now, with <kbd>Stop…</kbd> and <kbd>Open in Agents</kbd> one press away. A Mind can't move your screen, raise a window over your work, or close yours. Anything destructive asks first, and so does every email it would send, with the whole text on the card.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/mindview-desk.png" width="900" alt="The Mind View desk bar: the Yantrik Mind running a tool, the tool's name, and Stop and Open in Agents buttons">
+  <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/shots/mindview-desk.png" width="900" alt="The Mind View desk bar: the Yantrik Mind running a tool, the tool's name, and Stop and Open in Agents buttons">
   <br><sub>The desk bar over Mind View, captured on a test machine.</sub>
 </p>
 
@@ -45,7 +45,7 @@ A Mind opens apps in **Mind View**, its own space beside yours. A desk bar says 
 Files, folders and app shortcuts sit where you put them, with real thumbnails and a Continue row for what you had open. Archive moves things out of the way and Undo brings them back. Nothing is ever deleted on your behalf.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/bench.jpg" width="900" alt="The Yantrik desktop with folders, documents and photo thumbnails, and a Continue row for the last file opened">
+  <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/shots/bench.jpg" width="900" alt="The Yantrik desktop with folders, documents and photo thumbnails, and a Continue row for the last file opened">
 </p>
 
 ### 18 apps on one framework
@@ -53,7 +53,7 @@ Files, folders and app shortcuts sit where you put them, with real thumbnails an
 Calendar, Notes, Weather, Files, Email, Terminal, Editor, Music, Images and more, all built on the same app framework, so every one of them speaks the control surface from the start.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/yantrikos/.github/landing-v1/profile/shots/apps.png" width="900" alt="Four Yantrik apps: Calendar in week view, Notes, Weather and Files">
+  <img src="https://raw.githubusercontent.com/yantrikos/.github/main/profile/shots/apps.png" width="900" alt="Four Yantrik apps: Calendar in week view, Notes, Weather and Files">
 </p>
 
 <table>
